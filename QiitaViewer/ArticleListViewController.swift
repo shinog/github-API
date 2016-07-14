@@ -23,6 +23,7 @@ class ArticleListViewController: UIViewController, UITableViewDataSource {
         table.dataSource = self
         
         getArticles()
+        
     }
         
     func getArticles() {
@@ -56,7 +57,7 @@ class ArticleListViewController: UIViewController, UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .Subtitle, reuseIdentifier: "cell")
         let article = articles[indexPath.row]
-
+        
         cell.textLabel?.text = article["avatar"]!
         cell.detailTextLabel?.text = article["name"]!
         return cell
@@ -64,14 +65,26 @@ class ArticleListViewController: UIViewController, UITableViewDataSource {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {
+        
         if segue.identifier == "showImage"
         {
-            let indexPaths = self.tableView!.indexPathsForSelectedRows()!
+            //CollectionViewで利用したコードを使用(indexPathsForSelectedItems()のItem部分はRowへ変更)
+            let indexPaths = self.tableView!.indexPathsForSelectedRows()!  //エラー
             let indexPath = indexPaths[0] as NSIndexPath
             let vc = segue.destinationViewController as! NewViewController
-            vc.avatar = self.articles["avatar"][indexPath.row]!
             vc.name = self.articles["name"][indexPath.row]!
+            
+            //アバターURLをImageに変換
+            let url = NSURL(string:self.articles["avatar"][indexPath.row]!)
+            let req = NSURLRequest(URL:url!)
+            NSURLConnection.sendAsynchronousRequest(req, queue:NSOperationQueue.mainQueue()){(res, data, err) in
+                let image = UIImage(data:data!)
+                vc.avatar = self.image
+            }
         }
     }
+    
+
+    
     
 }

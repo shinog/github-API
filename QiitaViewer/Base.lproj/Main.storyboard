@@ -28,10 +28,10 @@
             </objects>
             <point key="canvasLocation" x="759.5" y="254.5"/>
         </scene>
-        <!--View Controller-->
+        <!--New View Controller-->
         <scene sceneID="6ME-9E-HB5">
             <objects>
-                <viewController id="oQH-nb-9rK" sceneMemberID="viewController">
+                <viewController id="oQH-nb-9rK" customClass="NewViewController" customModule="QiitaViewer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9mL-6I-9x1"/>
                         <viewControllerLayoutGuide type="bottom" id="eKb-VP-iBh"/>
@@ -43,9 +43,19 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IO0-3H-PmD">
                                 <rect key="frame" x="0.0" y="97" width="375" height="334"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0SB-tX-gg3">
+                                <rect key="frame" x="166" y="468" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="image" destination="IO0-3H-PmD" id="bj6-y5-YGk"/>
+                        <outlet property="label" destination="0SB-tX-gg3" id="D2c-uk-y41"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xoU-0F-rxd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
